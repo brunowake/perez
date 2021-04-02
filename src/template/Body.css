@@ -1,0 +1,54 @@
+.section .home_content {
+    display: flex;
+    justify-content: center;
+}
+
+.section .moveDown_button {
+    box-sizing: border-box;
+    position: absolute;
+    background-color: transparent;
+    border-radius: 30px;
+    width: 52px;
+    height: 52px;
+    border: none;
+    padding: 0;
+    top: calc(95% - 136px );
+}
+
+.section .moveDown_button img {
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+}
+
+.section .moveDown_button:hover {
+    border: solid #b6acac;
+}
+
+#fp-nav ul li a span {
+    background-color: #121212;
+}
+
+
+.atuacao_content{
+    display: flex;
+    justify-content: space-around;
+}
+
+.content-enter {
+    opacity: 0;
+  }
+  .content-enter-done{
+    opacity: 1;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .content-exit {
+    opacity: .5;
+  }
+  .content-exit-active {
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+
