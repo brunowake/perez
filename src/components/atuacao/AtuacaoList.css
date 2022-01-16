@@ -1,0 +1,43 @@
+.atuacao_content{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 2px #202020;
+  border-top: solid 2px #202020;
+  padding: 20px;
+  
+
+}
+
+
+@media (max-width: 700px){
+    .atuacao_content{
+      flex-direction: column;
+    }
+  }
+  
+
+    .content-enter {
+    }
+    .content-enter-active{
+      opacity: .6;
+      transform: scale(0.8);
+      
+    }
+    .content-enter-done{
+      opacity: 1;
+      transform: translateX(-40);
+      transition: opacity 300ms, transform 300ms;
+    }
+    .content-exit {
+      opacity: 1;
+    }
+    .content-exit-active {
+      opacity: .6;
+      transition: opacity 300ms, transform 300ms;
+    }
+  
+    .content-exit-done {
+      opacity: 0.5;
+      transform: scale(0.8);
+      transition: opacity 300ms, transform 300ms;
+    }

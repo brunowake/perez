@@ -6,7 +6,7 @@
 .section .moveDown_button {
     box-sizing: border-box;
     position: absolute;
-    background-color: transparent;
+    background-color: #F8AF1B42;
     border-radius: 30px;
     width: 52px;
     height: 52px;
@@ -22,7 +22,11 @@
 }
 
 .section .moveDown_button:hover {
-    border: solid #b6acac;
+    background-color: #F8AF1B42;
+}
+
+.section .moveDown_button:hover {
+    border: solid 2px #F8AF1B;
 }
 
 #fp-nav ul li a span {
@@ -30,25 +34,14 @@
 }
 
 
-.atuacao_content{
-    display: flex;
-    justify-content: space-around;
-}
 
-.content-enter {
-    opacity: 0;
-  }
-  .content-enter-done{
-    opacity: 1;
-    transform: scale(0.9);
-    transition: opacity 300ms, transform 300ms;
-  }
-  .content-exit {
-    opacity: .5;
-  }
-  .content-exit-active {
-    opacity: 0;
-    transform: translateX(0);
-    transition: opacity 300ms, transform 300ms;
-  }
 
+
+
+
+
+ @media (max-width: 1350px) {
+     .fullpage-wrapper {
+         margin-top: 64px;
+     }
+ }

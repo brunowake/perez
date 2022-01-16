@@ -1,0 +1,58 @@
+.trails-main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .trails-text {
+    position: relative;
+    width: 100%;
+    height: auto;
+    line-height: 70px;
+    color: white;
+    font-size: 7em;
+    font-weight: 800;
+    letter-spacing: -2px;
+    will-change: transform, opacity;
+    overflow: hidden;
+  }
+  
+  .trails-text > div {
+    overflow: hidden;
+  }
+  .trailContent {
+      display: flex;
+      width: 100%;
+  }
+
+  .trails-main:hover{
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px #F8AF1B;
+  }
+ @media (max-width: 1350px) {
+   .trailContent {
+     flex-direction: column;
+   }
+   .trails-text{
+    position: relative;
+    width: 100%;
+    height: auto;
+    line-height: 70px;
+    color: white;
+    font-size: 4em;
+    font-weight: 800;
+    letter-spacing: -2px;
+    will-change: transform, opacity;
+    overflow: hidden;
+   }
+   .trails-main {
+     width: auto;
+   }
+ }

@@ -1,0 +1,128 @@
+.iframe_style {
+flex: 1;
+margin: 20px;
+}
+
+.contato_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contato_container .texto_contato{
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.coluna_contato {
+    width: 100%;
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.social_midia {
+    text-align: center;
+    font-size: 20px;
+}
+.form {
+    flex: 1;
+    margin: 20px;
+}
+.form > label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 26px;
+    text-align: center;
+}
+
+.email {
+    display: inline-flex;
+    align-items: center;
+}
+
+.email > svg {
+    margin: 5px;
+}
+
+.phone {
+    display: inline-flex;
+    align-items: center;
+}
+
+.phone > svg {
+    margin: 5px;
+}
+
+
+
+
+select,
+input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.form textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.label,
+section > label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+input[type="submit"],
+.button {
+  background: #0e0d0d;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+  display: block;
+  appearance: none;
+  border-radius: 4px;
+  width: 100%;
+  font-weight: lighter;
+}
+
+.list_social_midia {
+    display: flex;
+    justify-content: center;
+}
+
+.list_social_midia img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}

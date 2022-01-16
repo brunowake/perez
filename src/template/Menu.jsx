@@ -1,62 +1,174 @@
-import React from 'react'
-import Link from '@material-ui/core/Link'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import './Menu.css'
-import 'fullpage.js'
+
+import { AppBar, Button, Drawer, IconButton, Link, makeStyles, MenuItem, Toolbar, Typography } from "@material-ui/core"
+import MenuIcon from '@material-ui/icons/Menu'
+import logoperez from '../img/logo_perez.png'
+import React, { useState, useEffect } from "react"
+const headersData = [
+  {
+    label: "Home",
+    href: "#firstPage",
+  },
+  {
+    label: "Áreas de atuação",
+    href: "#secondPage",
+  },
+  {
+    label: "Notícias",
+    href: "#thirdPage",
+  },
+  {
+    label: "Contato",
+    href: "#fourthPage",
+  },
+];
+
 
 
 const UseStyles = makeStyles((theme) => ({
-    root: {
-      '& > * ': {
-        padding: theme.spacing(2),
-        height: 48,
-        color: 'white',
-        fontSize: '.8rem',
-        
-      },
-      '& > *:active': {
-        backgroundColor: 'rgba(00, 00, 00, 0.6)',
-        borderRadius: '10px'
-      }
+  header: {
+    backgroundColor: 'white',
+    paddingRight: "79px",
+    paddingLeft: "118px",
+    "@media (max-width: 900px)": {
+      paddingLeft: 0,
+      paddingRight: 0,
     },
+  },
+  logo: {
+    height: 52,
+    width: 72
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  menuButton: {
+    fontFamily: "sans-serif",
+    fontWeight: 700,
+    size: "18px",
+    marginLeft: "38px",
+    color: '#242423'
+  },
+  drawerContainer: {
+    padding: "20px 30px",
+  }
+}));
 
-    menu:{
-        zIndex: '10',
-        background: 'rgba(00, 00, 00, 0.4)',
-        justifyContent: 'space-between'
-    }
-  }));
+
+function Header(props) {
 
 
-function nav(props) {
-    const classes = UseStyles();
+  const [state, setState] = useState({
+    mobileView: false,
+    drawerOpen: false
+  })
+
+  const { mobileView, drawerOpen } = state
+
+  useEffect(() => {
+    const setResponsiveness = () => {
+      return window.innerWidth < 900
+        ? setState((prevState) => ({ ...prevState, mobileView: true }))
+        : setState((prevState) => ({ ...prevState, mobileView: false }));
+    };
+    setResponsiveness();
+    window.addEventListener("resize", () => setResponsiveness());
+  }, []);
+
+
+  const { header, logo, menuButton, toolbar,drawerContainer } = UseStyles()
+  const getDrawerChoices = () => {
+    return headersData.map(({ label, href }) => {
+      return (
+        <Link
+          {...{
+            component: Link,
+            href: href,
+            color: "inherit",
+            style: { textDecoration: "none" },
+            key: label,
+          }}
+        >
+          <MenuItem>{label}</MenuItem>
+        </Link>
+      );
+    });
+  };
+
+  const displayDesktop = () => {
+    return <Toolbar className={toolbar}>
+      {femmecubatorLogo}
+      <div>
+        {getMenuButtons()}
+      </div>
+    </Toolbar>;
+  }
+
+  const femmecubatorLogo = (
+    <Typography variant="h6" component="h1">
+      <img src={logoperez} className={logo} />
+    </Typography>
+  )
+
+  const displayMobile = () => {
+
+    const handleDrawerOpen = () =>
+      setState((prevState) => ({ ...prevState, drawerOpen: true }))
+    const handleDrawerClose = () =>
+      setState((prevState) => ({ ...prevState, drawerOpen: false }))
 
     return (
-        <React.Fragment>
-            <Toolbar variant="dense" className={classes.menu}>
-                <h1>Logo</h1>
-                <Typography
-                    className={classes.root}
-                    component="nav"
-                    variant="button"
-                    color="primary"
-                    align="right"
-                    display="inline"
-                    
-                >
-                    <Link href="#firstPage" color="primary" component="a" >Home</Link>
-                    <Link href="#secondPage" color="primary" component="a">Áreas de atuação</Link>
-                    <Link href="#thirdPage" color="primary" component="a">Notícias</Link>
-                    <Link href="#fourthPage" color="primary" component="a">Contato</Link>
-                    <Link href="#fifthPage" color="primary" component="a">Mídia</Link>
-                    <Link href="#sixthPage" color="primary" component="a">Profissional</Link>
-                </Typography>
-            </Toolbar>
-        </React.Fragment>
+      <Toolbar>
+        <IconButton
+          {...{
+            edge: "start",
+                        "aria-label": "menu",
+            "aria-haspopup": "true",
+            onClick: handleDrawerOpen,
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
 
-    )
+        <Drawer
+          {...{
+            anchor: "bottom",
+            open: drawerOpen,
+            onClose: handleDrawerClose,
+          }} >
+
+          <div className={drawerContainer}>{getDrawerChoices()}</div>
+        </Drawer>
+        <div >{femmecubatorLogo}</div>
+      </Toolbar>
+    );
+  };
+
+  const getMenuButtons = () => {
+    return headersData.map(({ label, href }) => {
+      return (
+        <Button
+          {...{
+            key: label,
+            color: "secondary",
+            href: href,
+            component: Link,
+            className: menuButton
+          }}
+        >
+          {label}
+        </Button>
+      );
+    });
+  };
+
+  return (
+    <header>
+      <AppBar className={header}>
+        {mobileView ? displayMobile() : displayDesktop()}
+      </AppBar>
+    </header>
+  )
 }
 
-export default nav
+export default Header
